@@ -90,7 +90,7 @@ const Card = ({ text }) => {
             })}
           </div>
         </div>
-        <div className="bg-white w-full h-30 shadow-lg p-4">
+        <div className="bg-white w-full h-auto shadow-lg p-4">
           {name.map((msg) => {
             return (
               <div key={msg.id} className="flex items-center gap-3">
@@ -159,7 +159,7 @@ const Card = ({ text }) => {
         <div>
           {name.map((card) =>{
             return(
-              <div key={card.id} className="bg-white w-full p-4 my-5 h-[173px] shadow-lg rounded-lg">
+              <div key={card.id} className="bg-white w-full p-4 my-5 h-auto shadow-lg rounded-lg">
                 <div className="flex gap-4 items-center">
                   <img src={card.image} />
                   <div>

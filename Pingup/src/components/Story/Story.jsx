@@ -19,7 +19,7 @@ const Story = () => {
         <div className="flex gap-4 mx-14 my-10">
           <div className="flex flex-col gap-4">
             <div className="flex gap-4">
-              <div className="w-[120px] h-40 border-2 border-dashed border-[#A3B3FF] bg-gradient-to-t to-[#EEF2FF] rounded-md from-[#FFFFFF] flex-shrink-0">
+              <div className="w-[120px] h-40 border-2 border-dashed border-[#A3B3FF] bg-linear-to-t to-[#EEF2FF] rounded-md from-[#FFFFFF] shrink-0">
                 <div className="flex flex-col justify-center h-full items-center ">
                   <FaCirclePlus className="text-[#615FFF] text-4xl cursor-pointer" />
                   <h1 className="font-medium text-sm pt-3">Create Story</h1>
@@ -31,7 +31,7 @@ const Story = () => {
                     key={show.id}
                     src={show.image}
                     alt={`Story ${show.id}`}
-                    className={`w-[120px] h-40 object-cover rounded-md flex-shrink-0 ${index > 1 ? "hidden md:block lg:block" : ""}${index > 1 ? "md:hidden lg:block" : ""}`}
+                    className={`w-[120px] h-40 object-cover rounded-md shrink-0 ${index > 1 ? "hidden md:block lg:block" : ""}${index > 1 ? "md:hidden lg:block" : ""}`}
                   />
                 );
               })}
@@ -62,7 +62,7 @@ const Story = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-white rounded-lg hidden lg:block shadow-md w-80 h-52 my-5 p-2">
+            <div className="bg-white rounded-lg hidden lg:block shadow-md w-80 h-auto my-5 p-2">
               <h1>Recent Messages</h1>
               <div>
                 {recentMessage.map((showMessage) => {

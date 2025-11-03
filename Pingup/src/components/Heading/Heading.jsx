@@ -7,7 +7,6 @@ const Heading = (props) => {
       {" "}
      {props.heading}
     </h2>
-    <p className='text-[#45556C] text-base mt-2'>{props.message}</p>
   </div>
   )
 }
