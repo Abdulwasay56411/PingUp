@@ -20,10 +20,8 @@ const SideNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const activeClass =
-    "bg-[#EEF2FF] text-[#432DD7]";
-  const normalClass =
-    "bg-white text-[#4A5565] hover:bg-gray-100";
+  const activeClass = "bg-[#EEF2FF] text-[#432DD7]";
+  const normalClass = "bg-white text-[#4A5565] hover:bg-gray-100";
 
   return (
     <section>
@@ -54,7 +52,7 @@ const SideNav = () => {
           </div>
 
           <div className="px-6 py-4">
-            <Button icon={<CiCirclePlus/>}  text="Create post"/>
+            <Button icon={<CiCirclePlus />} text="Create post" />
           </div>
         </div>
 
@@ -78,31 +76,60 @@ const SideNav = () => {
           <FiMenu className="text-2xl" />
         </div>
       </div>
+      <div className="block lg:hidden">
+        <div
+          className="fixed top-4 right-4 bg-white w-10 h-10 rounded-lg shadow-lg flex justify-center items-center cursor-pointer z-50"
+          onClick={toggleMenu}
+        >
+          <FiMenu className="text-2xl" />
+        </div>
+      </div>
 
       <div
         className={`fixed top-0 left-0 h-full w-[250px] bg-white shadow-lg transform transition-transform duration-300 z-40 lg:hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-4">
-          <img className="w-1/3 h-auto ml-2" src={Logo} alt="Logo" />
-          <div className="w-full h-px my-3 bg-[#D1D5DC]"></div>
+        <div className="h-full flex flex-col">
+          <div className="p-4">
+            <img className="w-1/3 h-auto ml-2" src={Logo} alt="Logo" />
+            <div className="w-full h-px my-3 bg-[#D1D5DC]"></div>
+          </div>
 
-          {navLink.map((link) => (
-            <NavLink
-              key={link.id}
-              to={link.path}
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                `flex items-center gap-2 p-2 rounded-lg cursor-pointer font-medium ${
-                  isActive ? activeClass : "text-[#4A5565]"
-                }`
-              }
-            >
-              <div className="text-lg">{link.icon}</div>
-              <div>{link.heading}</div>
-            </NavLink>
-          ))}
+          <div className="flex-1 overflow-y-auto px-4 space-y-2">
+            {navLink.map((link) => (
+              <NavLink
+                key={link.id}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `flex items-center gap-2 p-2 rounded-lg cursor-pointer font-medium ${
+                    isActive ? activeClass : normalClass
+                  }`
+                }
+              >
+                <div className="text-lg">{link.icon}</div>
+                <div>{link.heading}</div>
+              </NavLink>
+            ))}
+            <div className="pt-3">
+              <NavLink to="/createpost">
+              <Button icon={<CiCirclePlus />} text="Create post" />
+              </NavLink>
+            </div>
+          </div>
+          <div className="p-4 border-t border-gray-200">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <img className="w-8 h-8 rounded-full" src={Sample} alt="User" />
+                <div>
+                  <h1 className="text-sm font-medium">John Wareen</h1>
+                  <p className="text-[12px] text-[#6A7282]">@john_warren</p>
+                </div>
+              </div>
+              <RxExit className="text-[#99A1AF] text-xl cursor-pointer" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

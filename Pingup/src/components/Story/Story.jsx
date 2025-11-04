@@ -21,7 +21,7 @@ const Story = () => {
          
           <div className="flex flex-col gap-4 w-full">
             
-            <div className="flex gap-4 w-full overflow-x-auto">
+            <div className="flex gap-1 md:gap-4 w-full overflow-x-auto">
               <div className="w-[120px] h-40 border-2 border-dashed border-[#A3B3FF] bg-linear-to-t to-[#EEF2FF] rounded-md from-[#FFFFFF] shrink-0">
                 <div className="flex flex-col justify-center h-full items-center ">
                   <FaCirclePlus className="text-[#615FFF] text-4xl cursor-pointer" />

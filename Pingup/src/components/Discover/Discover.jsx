@@ -51,7 +51,7 @@ const Discover = () => {
                       </div>
                     </div>
                     <div className="flex gap-2 items-center justify-center w-full mt-3">
-                      <button className="flex items-center justify-center gap-2 w-[80%] py-2 text-white font-medium rounded-lg bg-linear-to-r from-[#615FFF] to-[#9810FA]">
+                      <button className="flex items-center justify-center gap-2 w-[80%] py-2 text-white font-medium rounded-lg bg-linear-to-r from-[#615FFF] to-[#9810FA] transform duration-300 cursor-pointer hover:scale-105">
                         {item.userIcon}
                         {item.button}  
                       </button>
