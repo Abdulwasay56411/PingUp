@@ -52,7 +52,9 @@ const SideNav = () => {
           </div>
 
           <div className="px-6 py-4">
+            <NavLink to="/createpost">
             <Button icon={<CiCirclePlus />} text="Create post" />
+            </NavLink>
           </div>
         </div>
 

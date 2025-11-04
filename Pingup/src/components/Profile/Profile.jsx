@@ -39,7 +39,7 @@ const Profile = () => {
               className="
                 flex flex-col sm:flex-row 
                 w-full justify-between gap-3 
-                pt-5 sm:pt-5  mt-12
+                pt-5 sm:pt-5 px-4  mt-12
                 pl-5
                  sm:mt-0 
                 sm:pl-44
@@ -57,7 +57,7 @@ const Profile = () => {
                 </h2>
               </div>
 
-              <button className="border flex items-center justify-center gap-1 border-[#D1D5DC] w-[86px]  rounded-lg cursor-pointer font-medium mt-3 sm:mt-0">
+              <button className="border flex items-center justify-center gap-1 border-[#D1D5DC] w-[86px] h-10 rounded-lg cursor-pointer font-medium mt-3 sm:mt-0">
                 <FiEdit /> <span>Edit</span>
               </button>
             </div>
