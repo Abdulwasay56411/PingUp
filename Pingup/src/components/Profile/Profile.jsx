@@ -1,12 +1,13 @@
 import React from "react";
 import SideNav from "../SideNav/SideNav";
-import Sample from "../../assets/sample.png";
+import ProfileImage from '../../assets/profile.png'
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiCalendarDate } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import Card from "../Card/Card";
+import Background from '../../assets/Background.png'
 
 const Profile = () => {
   const [isActive, setIsActive] = useState(1);
@@ -20,17 +21,17 @@ const Profile = () => {
       <SideNav />
 
       <div className="mt-5 mx-auto w-full max-w-3xl px-4">
-        <div className="w-full h-56 bg-linear-to-l from-[#FCCEE8] via-[#E9D4FF] to-[#C6D2FF] rounded-t-lg"></div>
+        <div className="w-full h-56 rounded-t-lg bg-cover" style={{backgroundImage: `url(${Background})`}}></div>
 
         <div className="w-full bg-white shadow-md rounded-b-lg pb-5">
           <div className="flex flex-col md:flex-row items-start relative">
             <img
               className="
-                w-[120px] h-auto object-cover
+                w-[120px] h-auto  bg-center
                 ml-5 sm:ml-14 
                 absolute -top-14 
               "
-              src={Sample}
+              src={ProfileImage}
               alt="Profile"
             />
 
