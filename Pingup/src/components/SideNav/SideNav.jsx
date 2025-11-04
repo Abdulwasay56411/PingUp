@@ -27,7 +27,7 @@ const SideNav = () => {
     <section>
       <div className="hidden lg:flex lg:flex-col lg:justify-between bg-white w-[288px] h-screen shadow-lg">
         <div>
-          <div className="p-4 flex justify-center">
+          <div className="p-4 ml-5">
             <img className="w-1/3 h-auto" src={Logo} alt="Logo" />
           </div>
           <div className="w-full h-px mb-5 bg-[#D1D5DC]"></div>
