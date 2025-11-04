@@ -15,10 +15,10 @@ const Message = () => {
       <div>
         <Heading heading="Messages" />
         <Paragraph para="Talk to your friends and family"/>
-        <div className="px-16">
+        <div className=" px-5 md:px-16">
           {messageCard.map((card) => {
             return (
-              <div className=" bg-white max-w-xl rounded-lg w-full  h-[152px] shadow-md p-5 my-5">
+              <div className=" bg-white max-w-xl rounded-lg w-full h-auto shadow-md p-5 my-5">
                 <div className="flex justify-between items-center ">
                   <div className="flex  gap-3">
                     <img className="w-12 h-12" src={card.image} />

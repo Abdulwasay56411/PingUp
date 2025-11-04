@@ -23,7 +23,7 @@ const Connection = () => {
       <div>
         <Heading heading="Connections" />
         <Paragraph para="Manage your network and discover new connections" />
-        <div className="pl-16 mx-auto">
+        <div className=" px-5 md:pl-16 mx-auto">
           <div className="flex justify-center gap-8 mt-5 flex-wrap">
             {followingBox.map((box) => {
               return (
@@ -60,7 +60,7 @@ const Connection = () => {
           <div className="flex flex-wrap my-5 md:flex-nowrap gap-4 ">
             {card.map((cardItem) => {
               return (
-                <div className="bg-white w-full h-[168px] shadow-md rounded-lg mx-5 md:mx-0 my-4 p-3">
+                <div className="bg-white w-full h-auto shadow-md rounded-lg mx-2  md:mx-0 my-4 p-4">
                   <div className="flex justify-center gap-4 items-start ">
                     <img src={cardItem.image} />
                     <div>

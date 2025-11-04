@@ -11,7 +11,7 @@ import CardImage2 from "../../assets/images (2).png";
 const Card = ({ text }) => {
   return (
     <div>
-      <div className="w-full h-[619px] my-5 p-3  bg-white shadow-lg ">
+      <div className="w-full h-auto my-6  p-3 rounded-lg bg-white shadow-lg ">
         <div className="flex gap-2 items-center">
           <img className="w-10 h-10" src={Sample} />
           <div>
@@ -55,7 +55,7 @@ const Card = ({ text }) => {
         </div>
       </div>
       <div>
-        <div className="bg-white shadow-lg w-full h-[253px] my-3 rounded-lg px-4">
+        <div className="bg-white shadow-lg w-full h-auto my-5 rounded-lg px-4">
           <div className="flex items-center gap-3">
             <img className="w-8 h-8" src={Sample} />
             <div>
@@ -90,7 +90,7 @@ const Card = ({ text }) => {
             })}
           </div>
         </div>
-        <div className="bg-white w-full h-auto shadow-lg p-4">
+        <div className="bg-white w-full h-auto rounded-lg shadow-lg p-4">
           {name.map((msg) => {
             return (
               <div key={msg.id} className="flex items-center gap-3">
