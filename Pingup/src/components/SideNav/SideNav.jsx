@@ -8,6 +8,9 @@ import { CiSearch, CiCirclePlus } from "react-icons/ci";
 import { RxExit } from "react-icons/rx";
 import Button from "../Button/Button";
 
+// ⭐ ADD THIS
+import { motion, AnimatePresence } from "framer-motion";
+
 const navLink = [
   { id: 1, icon: <TiHomeOutline />, heading: "Feed", path: "/" },
   { id: 2, icon: <FiMessageCircle />, heading: "Message", path: "/message" },
@@ -25,40 +28,81 @@ const SideNav = () => {
 
   return (
     <section>
-      <div className="hidden lg:flex lg:flex-col lg:justify-between bg-white w-[288px] h-screen shadow-lg">
+      {/* Desktop Sidebar */}
+      <motion.div
+        initial={{ x: -40, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        className="hidden lg:flex lg:flex-col lg:justify-between bg-white w-[288px] h-screen shadow-lg"
+      >
         <div>
-          <div className="p-4 ml-5">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="p-4 ml-5"
+          >
             <img className="w-1/3 h-auto" src={Logo} alt="Logo" />
-          </div>
+          </motion.div>
+
           <div className="w-full h-px mb-5 bg-[#D1D5DC]"></div>
 
-          <div className="mt-2 space-y-2">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: { opacity: 1 },
+              show: {
+                transition: {
+                  staggerChildren: 0.08,
+                },
+              },
+            }}
+            className="mt-2 space-y-2"
+          >
             {navLink.map((link) => (
-              <NavLink
+              <motion.div
                 key={link.id}
-                to={link.path}
-                className={({ isActive }) =>
-                  `max-w-[220px] block mx-auto rounded-lg font-medium select-none cursor-pointer transition-colors duration-200 ${
-                    isActive ? activeClass : normalClass
-                  }`
-                }
+                variants={{
+                  hidden: { opacity: 0, x: -15 },
+                  show: { opacity: 1, x: 0 },
+                }}
               >
-                <div className="flex p-2 gap-3 items-center">
-                  <div className="text-lg">{link.icon}</div>
-                  <div>{link.heading}</div>
-                </div>
-              </NavLink>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `max-w-[220px] block mx-auto rounded-lg font-medium select-none cursor-pointer transition-colors duration-200 ${
+                      isActive ? activeClass : normalClass
+                    }`
+                  }
+                >
+                  <div className="flex p-2 gap-3 items-center">
+                    <div className="text-lg">{link.icon}</div>
+                    <div>{link.heading}</div>
+                  </div>
+                </NavLink>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="px-6 py-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="px-6 py-4"
+          >
             <NavLink to="/createpost">
-            <Button icon={<CiCirclePlus />} text="Create post" />
+              <Button icon={<CiCirclePlus />} text="Create post" />
             </NavLink>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="flex justify-between items-center p-5">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="flex justify-between items-center p-5"
+        >
           <div className="flex items-center gap-2">
             <img className="w-8 h-8 rounded-full" src={Sample} alt="User" />
             <div>
@@ -67,9 +111,10 @@ const SideNav = () => {
             </div>
           </div>
           <RxExit className="text-[#99A1AF] text-xl cursor-pointer" />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
+      {/* Mobile Menu Button */}
       <div className="block lg:hidden">
         <div
           className="fixed top-4 right-4 bg-white w-10 h-10 rounded-lg shadow-lg flex justify-center items-center cursor-pointer z-50"
@@ -78,62 +123,83 @@ const SideNav = () => {
           <FiMenu className="text-2xl" />
         </div>
       </div>
-      <div className="block lg:hidden">
-        <div
-          className="fixed top-4 right-4 bg-white w-10 h-10 rounded-lg shadow-lg flex justify-center items-center cursor-pointer z-50"
-          onClick={toggleMenu}
-        >
-          <FiMenu className="text-2xl" />
-        </div>
-      </div>
 
-      <div
-        className={`fixed top-0 left-0 h-full w-[250px] bg-white shadow-lg transform transition-transform duration-300 z-40 lg:hidden ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="h-full flex flex-col">
-          <div className="p-4">
-            <img className="w-1/3 h-auto ml-2" src={Logo} alt="Logo" />
-            <div className="w-full h-px my-3 bg-[#D1D5DC]"></div>
-          </div>
-
-          <div className="flex-1 overflow-y-auto px-4 space-y-2">
-            {navLink.map((link) => (
-              <NavLink
-                key={link.id}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `flex items-center gap-2 p-2 rounded-lg cursor-pointer font-medium ${
-                    isActive ? activeClass : normalClass
-                  }`
-                }
-              >
-                <div className="text-lg">{link.icon}</div>
-                <div>{link.heading}</div>
-              </NavLink>
-            ))}
-            <div className="pt-3">
-              <NavLink to="/createpost">
-              <Button icon={<CiCirclePlus />} text="Create post" />
-              </NavLink>
-            </div>
-          </div>
-          <div className="p-4 border-t border-gray-200">
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <img className="w-8 h-8 rounded-full" src={Sample} alt="User" />
-                <div>
-                  <h1 className="text-sm font-medium">John Wareen</h1>
-                  <p className="text-[12px] text-[#6A7282]">@john_warren</p>
-                </div>
+      {/* Mobile Sidebar */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: -250 }}
+            animate={{ x: 0 }}
+            exit={{ x: -250 }}
+            transition={{ duration: 0.35 }}
+            className="fixed top-0 left-0 h-full w-[250px] bg-white shadow-lg z-40 lg:hidden"
+          >
+            <div className="h-full flex flex-col">
+              <div className="p-4">
+                <img className="w-1/3 h-auto ml-2" src={Logo} alt="Logo" />
+                <div className="w-full h-px my-3 bg-[#D1D5DC]"></div>
               </div>
-              <RxExit className="text-[#99A1AF] text-xl cursor-pointer" />
+
+              <div className="flex-1 overflow-y-auto px-4 space-y-2">
+                {navLink.map((link) => (
+                  <motion.div
+                    key={link.id}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <NavLink
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center gap-2 p-2 rounded-lg cursor-pointer font-medium ${
+                          isActive ? activeClass : normalClass
+                        }`
+                      }
+                    >
+                      <div className="text-lg">{link.icon}</div>
+                      <div>{link.heading}</div>
+                    </NavLink>
+                  </motion.div>
+                ))}
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="pt-3"
+                >
+                  <NavLink to="/createpost">
+                    <Button icon={<CiCirclePlus />} text="Create post" />
+                  </NavLink>
+                </motion.div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="p-4 border-t border-gray-200"
+              >
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <img
+                      className="w-8 h-8 rounded-full"
+                      src={Sample}
+                      alt="User"
+                    />
+                    <div>
+                      <h1 className="text-sm font-medium">John Wareen</h1>
+                      <p className="text-[12px] text-[#6A7282]">@john_warren</p>
+                    </div>
+                  </div>
+                  <RxExit className="text-[#99A1AF] text-xl cursor-pointer" />
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
